@@ -13,7 +13,7 @@ module Morphy
       entries = @dawg.query(word)
 
       entries.lazy.map do |row|
-        next unless row.present?
+        next unless row.empty?
         word, para_id, index = row.to_s.split(' ')
         Word.new(word, para_id, index)
       end
